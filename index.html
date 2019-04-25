@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- info -->
+    <title>Petpoint Data Helper</title>
+    <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+    <script type="text/javascript" src="xlsx.full.min.js"></script>
+    <script type="text/javascript" src="polyfill.js"></script>
+    <!-- IE fix -->
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="http://metrics.cityoflewisville.com/assets/pmartin_dark.png" />
+    <!-- Vue -->
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js"></script>
+    <!-- Vuetify -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css" rel="stylesheet">
+    <!-- custom css -->
+    <link rel="stylesheet" src="style.css">
+    <!-- axios -->
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script>
+    <!-- IE fix -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="http://eservices.cityoflewisville.com/COLSecurity/col_security.js"></script>
+    <!-- momentjs -->
+    <script type="text/javascript" src="./moment/moment.js"></script>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"></script>
+</head>
+
+<body class="grey lighten-3">
+    <div id="app" v-cloak>
+        <template>
+            <v-app>
+                <v-toolbar :height="125" dark color="indigo">
+                    <img src='assets/img/paw.svg' contain width="75" />
+                    <v-toolbar-title class="white--text">Petpoint Data</v-toolbar-title>
+                    <v-spacer></v-spacer>
+                </v-toolbar>
+                <v-container grid-list-md text-md-center>
+                    <v-layout row wrap>
+                        <v-flex xs12>
+                            <v-alert :value="isError" type="error">
+                                {{ errorMessage }}.
+                            </v-alert>
+                        </v-flex>
+                        <v-flex xs12 align-center>
+                                    <h1>Upload Petpoint Reports</h1>
+                                    <h2>How to use:</h2>
+                                    <v-form>
+                                    <v-flex class="mt-5">
+                                        <h3>Select which report you are uploading here: </h3>
+                                           
+                                            <v-select style="width:25%;margin-left:auto;margin-right:auto;display: block;text-align: center;" 
+                                            :items="reports" v-model="selectedReport" label="Select Report" solo></v-select>
+                                            
+                                    </v-flex>
+                                    <v-flex class="mt-5" v-show="selectedReport != 'Select Report' && selectedReport !== ''">
+                                        <h3>Drag report to the drop zone</h3>
+                  
+                                        <div id="drop" :class="{ loaded: fileDropped === true }" @drop="handleDrop" @dragover="handleDragover"
+                                            @dragenter="handleDragover">
+                                            <span v-if="fileDropped === true">Report is Ready</span>
+                                            <span v-else> Drop File Here</span>    
+                                        </div>
+                                    </v-flex>
+                                    <v-flex class="mt-5" v-if="fileDropped === true">
+                                            <h3>Click "Submit"</h3>
+                                            <v-btn color="success" @click="postData(selectedReport)">Submit</v-btn>
+                                    </v-flex>
+                                </v-form>
+                        </v-flex>
+                    </v-layout>
+                </v-container>
+                <v-snackbar v-model="snackbar.show" :color="snackbar.color" :timeout="snackbar.timeout">
+                    {{ snackbar.text }}
+                    <v-btn dark flat @click="snackbar.show = false">
+                        Close
+                    </v-btn>
+                </v-snackbar>
+            </v-app>
+        </template>
+    </div>
+    <!-- source code -->
+    <script type="text/javascript" src="app.js"></script>
+
+
+</body>

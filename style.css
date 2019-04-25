@@ -1,0 +1,23 @@
+#drop {
+    border: 2px dashed #999;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    padding: 50px 25px;
+    text-align: center;
+    width: 328px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    color: #999;
+    margin-top: 25px;
+    font-size: 22px;
+}
+
+.loaded {
+    border: 2px dashed green !important;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+ color: green !important;
+}
