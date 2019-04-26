@@ -9,7 +9,7 @@ let app = new Vue({
   el: '#app',
   data: {
     fileDropped: false,
-    reports: ['Animal Outcome By Intake', 'Medical Exam Surgery Extended', 'Animal Intake With Results Extended'],
+    reports: ['Medical Exam Surgery Extended', 'Animal Intake With Results Extended'],
     selectedReport: '',
     json: '',
     workbook: '',

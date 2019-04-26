@@ -38,7 +38,7 @@
             <v-app>
                 <v-toolbar :height="125" dark color="indigo">
                     <img src='assets/img/paw.svg' contain width="75" />
-                    <v-toolbar-title class="white--text">Petpoint Data</v-toolbar-title>
+                    <v-toolbar-title class="white--text">Petpoint Data Helper</v-toolbar-title>
                     <v-spacer></v-spacer>
                 </v-toolbar>
                 <v-container grid-list-md text-md-center>
@@ -73,6 +73,41 @@
                                             <v-btn color="success" @click="postData(selectedReport)">Submit</v-btn>
                                     </v-flex>
                                 </v-form>
+                                <v-flex>
+                                        <table class="table table-striped table-hover table-condensed table-responsive">
+                                                <thead>
+                                                    <tr>
+                                                        <th v-for="item in state.headers">{{item}}</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr v-for="item in state.tickets">
+                                                        <td v-for="key in item">
+                                                            <label>{{key}}</label>
+                                                            <p>{{item.key}}</p>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                                <tfoot></tfoot>
+                                            </table>
+                                </v-flex>
+                <!-- <table class="table table-striped table-hover table-condensed table-responsive">
+                <thead>
+                    <tr>
+                        <th v-for="item in state.headers">{{item}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="item in state.tickets">
+                        <td v-for="key in item">
+                            <label>{{key}}</label>
+                            <p>{{item.key}}</p>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot></tfoot>
+            </table> -->
+                            
                         </v-flex>
                     </v-layout>
                 </v-container>
