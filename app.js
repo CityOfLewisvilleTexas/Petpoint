@@ -14,7 +14,7 @@ let app = new Vue({
     json: '',
     workbook: '',
     state: {
-      tickets: [{ name: "File" }],
+      tickets: [{ name: "File Output:" }],
       headers: ["Petpoint"]
     },
     title: 'Petpoint Data',
