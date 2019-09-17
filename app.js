@@ -5,11 +5,15 @@ const refresh = () => {
 }, 5000
   )}
 
+const vuetifyOptions = { }
+Vue.use(Vuetify)
+
 let app = new Vue({
   el: '#app',
+  vuetify: new Vuetify(vuetifyOptions),
   data: {
     fileDropped: false,
-    reports: ['Medical Exam Surgery Extended', 'Animal Intake With Results Extended', 'Animal Outcome By Intake Extended'],
+    reports: ['Medical Exam Surgery Extended', 'Animal Intake With Results Extended', 'Animal Outcome By Intake Extended', 'Animal Intake Crosstab Advanced', 'Ad Hoc Animal Intake With Results Extended'],
     selectedReport: '',
     json: '',
     workbook: '',
